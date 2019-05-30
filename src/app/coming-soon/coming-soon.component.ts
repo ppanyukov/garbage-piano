@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { haloRanks, haloRanksOrdered } from '../haloCsr';
 
 @Component({
   selector: 'app-coming-soon',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./coming-soon.component.scss']
 })
 export class ComingSoonComponent implements OnInit {
+  haloRanks = haloRanks;
+  haloRanksOrdered = haloRanksOrdered;
 
   constructor() { }
 
