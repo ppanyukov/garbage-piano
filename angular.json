@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -34,7 +35,7 @@
           "configurations": {
             "production": {
               "outputPath": "docs",
-              "baseHref" : "/garbage-piano/",
+              "baseHref": "/garbage-piano/",
               "deployUrl": "/garbage-piano/",
               "fileReplacements": [
                 {
@@ -90,6 +91,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -121,6 +123,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "garbage-piano"
 }

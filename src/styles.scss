@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  font-family: sans-serif;
-}
+
+// Angular Material added this.
+html, body { height: 100%; }
+
+
+// Angular Material added this.
+//
+// NOTES:
+//  iOS default apparently is: "Helvetica Neue"
+//  OSX is probably same?
+//  Roboto is new Google's font like Helvetica.
+//  Broadly very similar, but slight differences, with
+//  Roboto being slighly narrower. See here:
+//    http://www.identifont.com/differences?first=Helvetica&second=Roboto
+//  Note the use of $ here to see the effect as both fonts
+//  present $ differently.
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
