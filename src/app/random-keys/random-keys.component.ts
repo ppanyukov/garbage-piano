@@ -79,8 +79,9 @@ export class RandomKeysComponent implements OnInit {
 
   restart(): State {
     const oldState = this.state;
-    const nextState = new State(oldState.items);
-    return this.setState(nextState);
+    let nextState = new State(oldState.items);
+    nextState = this.setState(nextState);
+    return this.start();
   }
 
   start(): State {

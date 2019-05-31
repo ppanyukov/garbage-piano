@@ -32,7 +32,7 @@ import {
   // MatStepperModule,
   // MatTableModule,
   // MatTabsModule,
-  // MatToolbarModule,
+  MatToolbarModule,
   // MatTooltipModule,
   // MatTreeModule,
 } from '@angular/material';
@@ -76,7 +76,7 @@ import {
     // MatSortModule,
     // MatTableModule,
     // MatTabsModule,
-    // MatToolbarModule,
+    MatToolbarModule,
     // MatTooltipModule,
     // MatTreeModule,
     // PortalModule,

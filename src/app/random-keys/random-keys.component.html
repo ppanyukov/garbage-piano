@@ -1,52 +1,67 @@
 <!-- Center everything, same width as iPhone 5 -->
 <div style="max-width: 320px; margin:0 auto;">
-    <mat-card style="margin-left: 0px;">
-      <mat-card-title>
+  <mat-card
+    style="border-style: solid; border-width: 1px; border-top: none; border-radius: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px; padding: 0px; overflow:hidden;">
+    <mat-card-header style="background-color:whitesmoke; padding-top: 8px;">
+      <mat-card-title style="text-align: center;">
         Random scales
       </mat-card-title>
+    </mat-card-header>
+
+    <div style="height: 0px; border-top: 0.5px dotted darkgray;"></div>
+
+    <mat-card-actions
+      style="display: inline-flex;width: 100%; margin: 0px; padding-top: 0px; background-color:whitesmoke;">
+      <span>
+        <button mat-flat-button color="warn" (click)="reshuffle(); start()"
+          style="opacity: 0.5; border-radius: 0px;">reshuffle</button>
+      </span>
+      <span style="flex: 1 1 auto;"></span>
+      <span>
+        <button mat-flat-button color="primary" (click)="restart()"
+          style="opacity: 0.65; border-radius: 0px;">restart</button>
+      </span>
+    </mat-card-actions>
+  </mat-card>
+
+  <div *ngIf="state.progress === Progress.InProgress" style="margin-top: 8px;">
+    <mat-card style="border: thin solid black; margin-top: 5px;">
+      <mat-card-subtitle>
+        {{ state.currentItemNumber }} of {{ state.totalCount }}
+      </mat-card-subtitle>
+      <div style="height: 0px; border-top: 1px dotted darkgray; margin-left: -15px; margin-right: -15px;"></div>
+      <br />
+      <mat-card-title>
+        <div *ngFor="let item of state.currentItem">
+          <p>
+            {{ item }}
+          </p>
+        </div>
+      </mat-card-title>
+      <br />
       <mat-card-actions>
-        <button mat-flat-button color="primary" (click)="reshuffle(); start()">reshuffle</button>
+        <button mat-flat-button color="primary" style="width: 100%;" (click)="next()">next</button>
       </mat-card-actions>
     </mat-card>
-
-    <div *ngIf="state.progress === Progress.InProgress" style="margin-top: 8px;">
-      <mat-card style="border: thin solid black; margin-top: 5px;">
-        <mat-card-subtitle>
-          {{ state.currentItemNumber }} of {{ state.totalCount }}
-        </mat-card-subtitle>
-        <div style="height: 0px; border-top: 1px dotted darkgray; margin-left: -15px; margin-right: -15px;"></div>
-        <br />
-        <mat-card-title>
-          <div *ngFor="let item of state.currentItem">
-            <p>
-            {{ item }}
-            </p>
-          </div>
-        </mat-card-title>
-        <br />
-        <mat-card-actions>
-          <button mat-flat-button color="primary" style="width: 100%;" (click)="next()">next</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-
-
-    <div *ngIf="state.progress === Progress.NotStarted">
-      <mat-card style="border: thin solid black; margin-top: 5px;">
-        <mat-card-title>
-          not started
-        </mat-card-title>
-      </mat-card>
-    </div>
-
-
-    <div *ngIf="state.progress === Progress.Finished">
-      <mat-card style="border: thin solid black; margin-top: 5px;">
-        <mat-card-title>
-          finished
-        </mat-card-title>
-        <mat-card-actions>
-        </mat-card-actions>
-      </mat-card>
-    </div>
   </div>
+
+
+  <div *ngIf="state.progress === Progress.NotStarted">
+    <mat-card style="border: thin solid black; margin-top: 5px;">
+      <mat-card-title>
+        not started
+      </mat-card-title>
+    </mat-card>
+  </div>
+
+
+  <div *ngIf="state.progress === Progress.Finished">
+    <mat-card style="border: thin solid black; margin-top: 5px;">
+      <mat-card-title>
+        finished
+      </mat-card-title>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
