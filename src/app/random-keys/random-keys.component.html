@@ -1,6 +1,6 @@
 <!-- Center everything, same width as iPhone 5 -->
 <div style="max-width: 320px; margin:0 auto;">
-    <mat-card style="margin: 0px;">
+    <mat-card style="margin-left: 0px;">
       <mat-card-title>
         Random scales
       </mat-card-title>
@@ -9,21 +9,23 @@
       </mat-card-actions>
     </mat-card>
 
-    <div *ngIf="state.progress === Progress.InProgress">
+    <div *ngIf="state.progress === Progress.InProgress" style="margin-top: 8px;">
       <mat-card style="border: thin solid black; margin-top: 5px;">
         <mat-card-subtitle>
           {{ state.currentItemNumber }} of {{ state.totalCount }}
         </mat-card-subtitle>
-        <hr>
+        <div style="height: 0px; border-top: 1px dotted darkgray; margin-left: -15px; margin-right: -15px;"></div>
         <br />
         <mat-card-title>
           <div *ngFor="let item of state.currentItem">
+            <p>
             {{ item }}
+            </p>
           </div>
         </mat-card-title>
         <br />
         <mat-card-actions>
-          <button mat-flat-button color="primary" style="width: 100%" (click)="next()">next</button>
+          <button mat-flat-button color="primary" style="width: 100%;" (click)="next()">next</button>
         </mat-card-actions>
       </mat-card>
     </div>
