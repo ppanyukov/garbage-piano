@@ -56,7 +56,7 @@ export class RandomKeysComponent implements OnInit {
   public state: State;
 
   ngOnInit() {
-    this.reshuffle();
+    this.loadState();
     this.start();
   }
 
@@ -71,16 +71,16 @@ export class RandomKeysComponent implements OnInit {
     Rando.shuffleInplace(items);
 
     const nextState = new State(items);
-    this.state = nextState;
+    console.log('reshuffle state: ');
+    console.log(nextState);
 
-
-    return nextState;
+    return this.setState(nextState);
   }
 
   restart(): State {
     const oldState = this.state;
-    this.state = new State(oldState.items);
-    return this.start();
+    const nextState = new State(oldState.items);
+    return this.setState(nextState);
   }
 
   start(): State {
@@ -90,13 +90,11 @@ export class RandomKeysComponent implements OnInit {
       return oldState;
     }
 
-    const nextState = Object.assign(oldState, {
+    let nextState = Object.assign(oldState, {
       progress: Progress.InProgress,
     });
 
-    this.state = nextState;
-
-
+    nextState = this.setState(nextState);
     return this.next();
   }
 
@@ -104,7 +102,6 @@ export class RandomKeysComponent implements OnInit {
     const oldState = this.state;
 
     const nextNumber = oldState.currentItemNumber + 1;
-
 
     if (nextNumber > oldState.items.length) {
       return this.finish();
@@ -117,8 +114,7 @@ export class RandomKeysComponent implements OnInit {
       });
 
 
-    this.state = nextState;
-    return nextState;
+    return this.setState(nextState);
   }
 
   finish(): State {
@@ -128,8 +124,29 @@ export class RandomKeysComponent implements OnInit {
       progress: Progress.Finished,
       });
 
-    this.state = nextState;
-    return nextState;
+    return this.setState(nextState);
+  }
+
+  private setState(newState: State): State {
+    this.state = newState;
+    localStorage.setItem('RandomKeyComponent.state', JSON.stringify(newState));
+    return newState;
+  }
+
+  private loadState(): State {
+    try {
+      const s = localStorage.getItem('RandomKeyComponent.state');
+      if (!s || s === '') {
+        return this.reshuffle();
+      }
+
+      const nextState = JSON.parse(s);
+      console.log('Got state from storage');
+      console.log(nextState);
+      return this.setState(nextState);
+    } catch {
+      return this.reshuffle();
+    }
   }
 }
 
