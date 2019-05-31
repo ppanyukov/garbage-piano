@@ -5,12 +5,12 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ComingSoonComponent,
-  },
-  {
     path: 'random-keys',
     component: RandomKeysComponent,
+  },
+  {
+    path: '**',
+    component: ComingSoonComponent,
   },
 ];
 
