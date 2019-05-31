@@ -1,0 +1,44 @@
+<mat-card style="margin: 0px;">
+  <mat-card-title>
+    Random scales
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{ state.currentItemNumber }} of {{ state.totalCount }}
+  </mat-card-subtitle>
+  <mat-card-actions>
+    <button mat-flat-button color="primary" (click)="reshuffle(); start()">reshuffle</button>
+  </mat-card-actions>
+</mat-card>
+
+<div *ngIf="state.progress === Progress.InProgress">
+  <mat-card style="border: thin solid black; margin-top: 5px;">
+    <mat-card-title>
+      <div *ngFor="let item of state.currentItem">
+        {{ item }}
+      </div>
+    </mat-card-title>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" style="width: 100%" (click)="next()">next</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<div *ngIf="state.progress === Progress.NotStarted">
+  <mat-card style="border: thin solid black; margin-top: 5px;">
+    <mat-card-title>
+      not started
+    </mat-card-title>
+  </mat-card>
+</div>
+
+
+<div *ngIf="state.progress === Progress.Finished">
+  <mat-card style="border: thin solid black; margin-top: 5px;">
+    <mat-card-title>
+      finished
+    </mat-card-title>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</div>
