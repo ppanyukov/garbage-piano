@@ -9,7 +9,7 @@ const routes: Routes = [
     component: RandomKeysComponent,
   },
   {
-    path: '**',
+    path: '',
     component: ComingSoonComponent,
   },
 ];
